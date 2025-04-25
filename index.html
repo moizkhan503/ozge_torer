@@ -109,7 +109,7 @@
         }
 
         /* ===== TYPOGRAPHY ===== */
-        h1, h2, h3, h4, h5, h6 {
+        h1, h2, h3, h4, h5, h5 {
             font-family: var(--font-heading);
             font-weight: 700;
             line-height: 1.2;
@@ -489,7 +489,6 @@
         .about {
             background-color: var(--light);
             position: relative;
-            overflow: hidden;
         }
 
         body.dark-theme .about {
@@ -561,7 +560,6 @@
             font-size: 2.5rem;
             margin-bottom: 1.5rem;
             position: relative;
-            display: inline-block;
         }
 
         .about-text h3::after {
@@ -1483,6 +1481,195 @@
         .visible {
             display: block;
         }
+
+        /* ===== CHATBOT STYLES ===== */
+        #chatbot {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 10000;
+            font-family: var(--font-body);
+        }
+
+        #chat-toggle {
+            width: 60px;
+            height: 60px;
+            background: var(--gradient-main);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(233, 64, 87, 0.4);
+            color: var(--white);
+            font-size: 1.5rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        #chat-toggle:hover {
+            transform: scale(1.1);
+            box-shadow: 0 8px 20px rgba(233, 64, 87, 0.6);
+        }
+
+        #chat-box {
+            display: none;
+            flex-direction: column;
+            width: 350px;
+            height: 500px;
+            background: #121212;
+            color: var(--white);
+            border: 2px solid var(--primary);
+            border-radius: 15px;
+            box-shadow: var(--shadow-lg);
+            overflow: hidden;
+            animation: fadeIn var(--transition-fast) ease;
+            position: absolute;
+            bottom: 80px;
+            right: 0;
+        }
+
+        #chat-box.active {
+            display: flex;
+        }
+
+        #chat-header {
+            background: var(--gradient-main);
+            padding: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        #chat-header h3 {
+            margin: 0;
+            font-size: 1.2rem;
+            color: white;
+        }
+
+        #chat-close {
+            background: transparent;
+            border: none;
+            color: white;
+            font-size: 1.2rem;
+            cursor: pointer;
+        }
+
+        #chat-messages {
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+            flex: 1;
+            padding: 1rem;
+            overflow-y: auto;
+            background: #1a1a1a;
+        }
+
+        #chat-input-container {
+            display: flex;
+            border-top: 1px solid #333;
+            background: #121212;
+        }
+
+        #chat-input {
+            flex: 1;
+            border: none;
+            padding: 15px;
+            font-size: 1rem;
+            background: transparent;
+            color: var(--white);
+        }
+
+        #chat-input::placeholder {
+            color: #777;
+        }
+
+        #chat-input:focus {
+            outline: none;
+        }
+
+        #chat-send {
+            background: var(--primary);
+            border: none;
+            padding: 0 20px;
+            color: var(--white);
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        #chat-send:hover {
+            background: var(--secondary);
+        }
+
+        #chat-send:disabled {
+            background: #555;
+            cursor: not-allowed;
+        }
+
+        /* Message bubbles */
+        .user-message, .bot-message {
+            max-width: 80%;
+            padding: 10px 15px;
+            border-radius: 15px;
+            margin-bottom: 5px;
+            word-wrap: break-word;
+        }
+
+        .user-message {
+            align-self: flex-end;
+            background: var(--primary);
+            color: white;
+            border-bottom-right-radius: 5px;
+        }
+
+        .bot-message {
+            align-self: flex-start;
+            background: #333;
+            color: white;
+            border-bottom-left-radius: 5px;
+        }
+
+        .typing-indicator {
+            display: flex;
+            align-items: center;
+            align-self: flex-start;
+            background: #333;
+            padding: 12px 15px;
+            border-radius: 15px;
+            border-bottom-left-radius: 5px;
+        }
+
+        .typing-indicator span {
+            height: 8px;
+            width: 8px;
+            background: #777;
+            border-radius: 50%;
+            display: inline-block;
+            margin-right: 5px;
+            animation: typing 1s infinite ease-in-out;
+        }
+
+        .typing-indicator span:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .typing-indicator span:nth-child(3) {
+            animation-delay: 0.4s;
+            margin-right: 0;
+        }
+
+        @keyframes typing {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(-5px); }
+            100% { transform: translateY(0); }
+        }
+
+        @media (max-width: 576px) {
+            #chat-box {
+                width: 300px;
+                height: 450px;
+                right: 0;
+            }
+        }
     </style>
 </head>
 <body>
@@ -1551,7 +1738,7 @@
             
             <div class="about-content">
                 <div class="about-image" data-aos="fade-right" data-aos-duration="1000">
-                    <img src="images.jpg" alt="Özge Törer Portrait">
+                    <img src="e741761f1860ee9f5e0f9ce489b8b68e.jpg" alt="Özge Törer Portrait">
                 </div>
                 <div class="about-text" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="200">
                     <h3>The Journey</h3>
@@ -1593,7 +1780,7 @@
             
             <div class="gallery-grid">
                 <div class="gallery-item" data-category="portraits" data-aos="fade-up" data-aos-duration="800" data-aos-delay="100">
-                    <img src="images.jpg" alt="Özge Törer Portrait">
+                    <img src="e741761f1860ee9f5e0f9ce489b8b68e.jpg" alt="Özge Törer Portrait">
                     <div class="gallery-overlay">
                         <h4>Elegant Portrait</h4>
                         <p>A stunning close-up capturing Özge's natural beauty</p>
@@ -1632,6 +1819,20 @@
                     <div class="gallery-overlay">
                         <h4>Traditional Elegance</h4>
                         <p>Wearing traditional headpiece for a historical drama</p>
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="events" data-aos="fade-up" data-aos-duration="800" data-aos-delay="700">
+                    <img src="best.jpg" alt="Özge Törer Event">
+                    <div class="gallery-overlay">
+                        <h4>Award Ceremony</h4>
+                        <p>Özge at a prestigious award ceremony</p>
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="events" data-aos="fade-up" data-aos-duration="800" data-aos-delay="800">
+                    <img src="best2.jpg" alt="Özge Törer Event">
+                    <div class="gallery-overlay">
+                        <h4>Red Carpet</h4>
+                        <p>Stunning appearance at a film festival</p>
                     </div>
                 </div>
             </div>
@@ -1706,7 +1907,7 @@
             
             <div class="edits-grid">
                 <div class="edit-item" data-aos="fade-up" data-aos-duration="800" data-aos-delay="100">
-                    <video class="edit-video" poster="images.jpg" preload="metadata">
+                    <video class="edit-video" poster="e741761f1860ee9f5e0f9ce489b8b68e.jpg" preload="metadata">
                         <source src="WhatsApp Video 2025-04-24 at 21.27.31_27549a61.mp4" type="video/mp4">
                         Your browser does not support the video tag.
                     </video>
@@ -1845,6 +2046,26 @@
         </div>
     </div>
 
+    <!-- Chatbot Widget -->
+    <div id="chatbot">
+        <div id="chat-toggle">
+            <i class="fas fa-comment-dots"></i>
+        </div>
+        <div id="chat-box">
+            <div id="chat-header">
+                <h3>Ask about Özge Törer</h3>
+                <button id="chat-close"><i class="fas fa-times"></i></button>
+            </div>
+            <div id="chat-messages">
+                <div class="bot-message">Hi there! I'm Özge's virtual assistant. Ask me anything about her career, achievements, or upcoming projects!</div>
+            </div>
+            <div id="chat-input-container">
+                <input type="text" id="chat-input" placeholder="Type your question here..." />
+                <button id="chat-send"><i class="fas fa-paper-plane"></i></button>
+            </div>
+        </div>
+    </div>
+
     <!-- Scripts -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/js/all.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
@@ -1853,18 +2074,20 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.7.0/vanilla-tilt.min.js"></script>
     
     <script>
-        // Initialize AOS
-        AOS.init({
-            duration: 1000,
-            once: true,
-            mirror: false,
-            offset: 100
-        });
+      document.addEventListener('DOMContentLoaded', function() {
+    // Initialize AOS
+    AOS.init({
+        duration: 1000,
+        once: true,
+        mirror: false,
+        offset: 100
+    });
 
-        // Mobile Navigation Toggle
-        const hamburger = document.querySelector('.hamburger');
-        const navLinks = document.querySelector('.nav-links');
+    // Mobile Navigation Toggle
+    const hamburger = document.querySelector('.hamburger');
+    const navLinks = document.querySelector('.nav-links');
 
+    if (hamburger && navLinks) {
         hamburger.addEventListener('click', () => {
             hamburger.classList.toggle('active');
             navLinks.classList.toggle('active');
@@ -1877,35 +2100,46 @@
                 navLinks.classList.remove('active');
             });
         });
+    }
 
-        // Header scroll effect
-        window.addEventListener('scroll', () => {
-            const header = document.querySelector('header');
+    // Header scroll effect
+    window.addEventListener('scroll', () => {
+        const header = document.querySelector('header');
+        if (header) {
             header.classList.toggle('scrolled', window.scrollY > 50);
-        });
+        }
+    });
 
-        // Scroll Progress Bar
+    // Scroll Progress Bar
+    const progressBar = document.getElementById('progressBar');
+    if (progressBar) {
         window.addEventListener('scroll', () => {
             const scrollTop = window.scrollY;
             const docHeight = document.body.scrollHeight - window.innerHeight;
             const scrollPercent = (scrollTop / docHeight) * 100;
-            document.getElementById('progressBar').style.width = scrollPercent + '%';
+            progressBar.style.width = scrollPercent + '%';
         });
+    }
 
-        // Theme Toggle
-        const themeBtn = document.getElementById('theme-toggle');
+    // Theme Toggle
+    const themeBtn = document.getElementById('theme-toggle');
+    if (themeBtn) {
         const themeIcon = themeBtn.querySelector('i');
         
         themeBtn.addEventListener('click', () => {
             document.body.classList.toggle('dark-theme');
-            themeIcon.classList.toggle('fa-moon');
-            themeIcon.classList.toggle('fa-sun');
+            if (themeIcon) {
+                themeIcon.classList.toggle('fa-moon');
+                themeIcon.classList.toggle('fa-sun');
+            }
         });
+    }
 
-        // Gallery Filter
-        const filterBtns = document.querySelectorAll('.filter-btn');
-        const galleryItems = document.querySelectorAll('.gallery-item');
+    // Gallery Filter
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    const galleryItems = document.querySelectorAll('.gallery-item');
 
+    if (filterBtns.length > 0 && galleryItems.length > 0) {
         filterBtns.forEach(btn => {
             btn.addEventListener('click', () => {
                 // Remove active class from all buttons
@@ -1924,25 +2158,30 @@
                 });
             });
         });
+    }
 
-        // Gallery Modal
-        const galleryImages = document.querySelectorAll('.gallery-item img');
-        const modal = document.querySelector('.modal');
-        const modalImg = document.querySelector('.modal-content img');
-        const closeModal = document.querySelector('.close-modal');
+    // Gallery Modal
+    const galleryImages = document.querySelectorAll('.gallery-item img');
+    const modal = document.querySelector('.modal');
+    
+    if (galleryImages.length > 0 && modal) {
+        const modalImg = modal.querySelector('.modal-content img');
+        const closeModal = modal.querySelector('.close-modal');
 
         galleryImages.forEach(img => {
             img.addEventListener('click', () => {
-                modalImg.src = img.src;
+                if (modalImg) modalImg.src = img.src;
                 modal.classList.add('active');
                 document.body.style.overflow = 'hidden';
             });
         });
 
-        closeModal.addEventListener('click', () => {
-            modal.classList.remove('active');
-            document.body.style.overflow = 'auto';
-        });
+        if (closeModal) {
+            closeModal.addEventListener('click', () => {
+                modal.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            });
+        }
 
         // Close modal when clicking outside the image
         modal.addEventListener('click', (e) => {
@@ -1951,14 +2190,16 @@
                 document.body.style.overflow = 'auto';
             }
         });
+    }
 
-        // Video Play Button
-        const videoContainers = document.querySelectorAll('.edit-item');
+    // Video Play Button
+    const videoContainers = document.querySelectorAll('.edit-item');
+    
+    videoContainers.forEach(container => {
+        const video = container.querySelector('video');
+        const playBtn = container.querySelector('.play-btn');
         
-        videoContainers.forEach(container => {
-            const video = container.querySelector('video');
-            const playBtn = container.querySelector('.play-btn');
-            
+        if (video && playBtn) {
             playBtn.addEventListener('click', () => {
                 if (video.paused) {
                     video.play();
@@ -1972,9 +2213,11 @@
             video.addEventListener('ended', () => {
                 playBtn.innerHTML = '<i class="fas fa-play"></i>';
             });
-        });
+        }
+    });
 
-        // Initialize Swiper
+    // Initialize Swiper if elements exist
+    if (document.querySelector('.testimonials-slider')) {
         const swiper = new Swiper('.testimonials-slider', {
             slidesPerView: 1,
             spaceBetween: 30,
@@ -1996,11 +2239,13 @@
                 },
             }
         });
+    }
 
-        // Custom Cursor
-        const cursor = document.getElementById('cursor');
-        const cursorFollower = document.getElementById('cursor-follower');
-        
+    // Custom Cursor
+    const cursor = document.getElementById('cursor');
+    const cursorFollower = document.getElementById('cursor-follower');
+    
+    if (cursor && cursorFollower) {
         document.addEventListener('mousemove', (e) => {
             cursor.style.left = e.clientX + 'px';
             cursor.style.top = e.clientY + 'px';
@@ -2035,8 +2280,10 @@
                 cursorFollower.classList.remove('cursor-hover');
             });
         });
+    }
 
-        // Initialize Vanilla Tilt
+    // Initialize Vanilla Tilt
+    if (typeof VanillaTilt !== 'undefined') {
         VanillaTilt.init(document.querySelectorAll('.gallery-item, .about-image, .edit-item'), {
             max: 15,
             speed: 400,
@@ -2044,8 +2291,10 @@
             "max-glare": 0.3,
             scale: 1.05
         });
+    }
 
-        // Initialize Particles.js
+    // Initialize Particles.js if the element exists
+    if (document.getElementById('tsparticles') && typeof tsParticles !== 'undefined') {
         tsParticles.load("tsparticles", {
             particles: {
                 number: {
@@ -2135,6 +2384,170 @@
                 size: "cover"
             }
         });
-    </script>
+    }
+
+    // Chat functionality
+    const chatToggle = document.getElementById('chat-toggle');
+    const chatBox = document.getElementById('chat-box');
+    const chatClose = document.getElementById('chat-close');
+    const chatInput = document.getElementById('chat-input');
+    const chatSend = document.getElementById('chat-send');
+    const chatMessages = document.getElementById('chat-messages');
+    
+    // Chat history
+    const history = [
+        { role: 'system', content: 'You are an AI assistant specialized in answering questions only about Özge Törer. Answer concisely and accurately.' }
+    ];
+    
+    // Initialize chat functionality if elements exist
+    if (chatToggle && chatBox) {
+        // Chat toggle
+        chatToggle.addEventListener('click', function() {
+            chatBox.classList.toggle('active');
+            if (chatBox.classList.contains('active') && chatInput) {
+                chatInput.focus();
+            }
+        });
+        
+        if (chatClose) {
+            chatClose.addEventListener('click', function() {
+                chatBox.classList.remove('active');
+            });
+        }
+        
+        // Initialize Groq chat
+        let chat;
+        
+        // --- System prompt for Özge Törer AI Assistant ---
+        const SYSTEM_PROMPT = `
+You are an AI assistant representing Özge Törer, the award-winning Turkish actress best known for her role as Bala Hatun in "Kuruluş: Osman". 
+Your primary goal is to provide helpful, accurate, and concise answers about Özge Törer.
+
+Key Guidelines:
+1. Only answer questions about Özge Törer, her career, achievements, roles, and public life.
+2. If asked about anything unrelated to Özge Törer, politely decline and remind the user that you are only able to answer questions about Özge Törer.
+3. Maintain a professional, friendly, and informative tone.
+4. If you are unsure about something, say so honestly.
+
+Background Information about Özge Törer:
+- Profession: Actress
+- Nationality: Turkish
+- Notable Role: Bala Hatun in "Kuruluş: Osman"
+- Awards: Best Actress awards and recognition in Turkey
+- Known for: Strong performances, dedication to her craft, and positive public image
+
+Response Strategy:
+- For questions about Özge Törer: Provide accurate, concise, and engaging answers
+- For unrelated questions: Politely decline and clarify your purpose
+- Always be helpful, friendly, and professional
+`;
+        // --- End system prompt ---
+        
+        // --- Chat history ---
+        const history = [
+          { role: 'system', content: SYSTEM_PROMPT }
+        ];
+        // --- End chat history ---
+        
+        // Import the ChatGroq module from local file
+        Promise.all([
+            import('./groq-browser.js'),
+            import('./cont.js')
+        ]).then(([groqModule, contModule]) => {
+            initializeChat(groqModule.ChatGroq, contModule.AI_MODEL, contModule.GROQ_API_KEY);
+        }).catch(err => {
+            console.error("Error importing modules:", err);
+            if (chatMessages) {
+                chatMessages.innerHTML += `<div class=\"bot-message\">Error connecting to Özge Törer AI service. Please check your local files or try again later.<br><span style='color:#888;font-size:13px;'>[Import Error: ${err.message}]</span></div>`;
+            }
+        });
+        
+        function initializeChat(ChatGroq, AI_MODEL, GROQ_API_KEY) {
+            try {
+                chat = new ChatGroq({
+                    model: AI_MODEL,
+                    temperature: 0.7,
+                    apiKey: GROQ_API_KEY
+                });
+                
+                console.log("Chat service initialized successfully");
+                
+                if (chatInput && chatSend) {
+                    function updateSendButton() {
+                        if (chatSend) {
+                            chatSend.disabled = !chatInput.value.trim();
+                        }
+                    }
+                    updateSendButton();
+                    chatInput.addEventListener('input', updateSendButton);
+                    chatSend.addEventListener('click', handleSend);
+                    chatInput.addEventListener('keydown', function(e) {
+                        if (e.key === 'Enter' && !e.shiftKey) {
+                            e.preventDefault();
+                            handleSend();
+                        }
+                    });
+                }
+            } catch (error) {
+                console.error("Failed to initialize chat:", error);
+                if (chatMessages) {
+                    chatMessages.innerHTML += `<div class=\"bot-message\">Failed to initialize chat service: ${error.message}</div>`;
+                }
+            }
+        }
+        
+        // Handle sending messages
+        async function handleSend() {
+            if (!chatInput || !chatMessages) return;
+            
+            const text = chatInput.value.trim();
+            if (!text) return;
+            
+            // Clear input and disable send button
+            chatInput.value = '';
+            if (chatSend) chatSend.disabled = true;
+            
+            // Add user message to chat
+            chatMessages.innerHTML += `<div class="user-message">${text}</div>`;
+            chatMessages.innerHTML += `<div class="bot-message">Thinking...</div>`;
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+            
+            // Add message to history
+            history.push({ role: 'user', content: text });
+            
+            try {
+                if (!chat) {
+                    throw new Error("Chat service not initialized yet. Please try again in a moment.");
+                }
+                
+                // Get response from AI
+                const response = await chat.call(history);
+                
+                // Add response to history
+                history.push({ role: 'assistant', content: response.text });
+                
+                // Update the "Thinking..." message with the actual response
+                const botMessages = chatMessages.querySelectorAll('.bot-message');
+                if (botMessages.length > 0) {
+                    botMessages[botMessages.length - 1].textContent = response.text;
+                }
+            } catch (error) {
+                console.error("Error getting response:", error);
+                
+                // Update the "Thinking..." message with error
+                const botMessages = chatMessages.querySelectorAll('.bot-message');
+                if (botMessages.length > 0) {
+                    botMessages[botMessages.length - 1].textContent = 'Error: ' + error.message;
+                }
+            } finally {
+                // Re-enable send button if input has text
+                if (chatSend) chatSend.disabled = !chatInput.value.trim();
+                chatMessages.scrollTop = chatMessages.scrollHeight;
+            }
+        }
+    }
+});
+</script>
 </body>
 </html>
+
