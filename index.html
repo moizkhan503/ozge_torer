@@ -1,0 +1,930 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Özge Törer | Turkish Actress</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap');
+
+        body {
+            background-color: #f8f8f8;
+            color: #333;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        header {
+            background-color: rgba(0, 0, 0, 0.8);
+            position: fixed;
+            width: 100%;
+            z-index: 100;
+            padding: 20px 0;
+            transition: all 0.3s ease;
+        }
+
+        header.scrolled {
+            background-color: rgba(0, 0, 0, 0.95);
+            padding: 15px 0;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 28px;
+            font-weight: 700;
+            color: #fff;
+            letter-spacing: 1px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 500;
+            position: relative;
+            padding: 5px 0;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background-color: #e94057;
+            bottom: 0;
+            left: 0;
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .hamburger {
+            display: none;
+            cursor: pointer;
+        }
+
+        .hamburger div {
+            width: 25px;
+            height: 3px;
+            background-color: #fff;
+            margin: 5px 0;
+            transition: all 0.3s ease;
+        }
+
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            background-image: url('ozge2.jpg');
+            background-attachment: fixed;
+            background-size: cover;
+            background-position: top center;
+            background-repeat: no-repeat;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to right, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.3));
+            z-index: 1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 600px;
+            padding-left: 50px;
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 64px;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 5px rgba(0,0,0,0.7);
+        }
+
+        .hero p {
+            color: #eee;
+            font-size: 18px;
+            line-height: 1.6;
+            margin-bottom: 30px;
+        }
+
+        .cta-btn {
+            display: inline-block;
+            background: linear-gradient(45deg, #e94057, #f27121);
+            color: #fff;
+            padding: 15px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            letter-spacing: 1px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .cta-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(233, 64, 87, 0.3);
+        }
+
+        .hero-image {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 50%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .about {
+            padding: 100px 0;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 42px;
+            text-align: center;
+            margin-bottom: 20px;
+            position: relative;
+            color: #333;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(45deg, #e94057, #f27121);
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .section-subtitle {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 50px;
+            color: #666;
+            font-size: 18px;
+        }
+
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+        }
+
+        .about-image {
+            flex: 1;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .about-image img {
+            width: 100%;
+            height: auto;
+            transition: transform 0.5s ease;
+        }
+
+        .about-image:hover img {
+            transform: scale(1.05);
+        }
+
+        .about-text {
+            flex: 1;
+        }
+
+        .about-text h3 {
+            font-size: 28px;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .about-text p {
+            color: #666;
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+
+        .gallery {
+            padding: 100px 0;
+            background-color: #f1f1f1;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 50px;
+        }
+
+        .gallery-item {
+            border-radius: 10px;
+            overflow: hidden;
+            position: relative;
+            height: 400px;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-10px);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: 20px;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+            color: #fff;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.3s ease;
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .gallery-overlay h4 {
+            font-size: 22px;
+            margin-bottom: 10px;
+        }
+
+        .gallery-overlay p {
+            font-size: 14px;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+            padding: 50px;
+        }
+
+        .modal-content {
+            max-width: 80%;
+            max-height: 80%;
+        }
+
+        .modal-content img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            color: white;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .achievements {
+            padding: 120px 20px;
+            background: #f9f9f9;
+        }
+
+        .timeline {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0;
+        }
+
+        .timeline-item {
+            background: #fff;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .timeline-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .timeline-date {
+            background: linear-gradient(45deg, #e94057, #f27121);
+            color: #fff;
+            font-weight: 600;
+            display: inline-block;
+            padding: 6px 14px;
+            border-radius: 20px;
+            margin-bottom: 15px;
+        }
+
+        .timeline-content h4 {
+            font-size: 24px;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .timeline-content p {
+            color: #555;
+            line-height: 1.6;
+        }
+
+        footer {
+            background-color: #222;
+            padding: 50px 0 20px;
+            color: #fff;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            margin-bottom: 40px;
+        }
+
+        .footer-col {
+            flex: 1;
+            min-width: 250px;
+            margin-bottom: 30px;
+        }
+
+        .footer-col h3 {
+            font-size: 20px;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-col h3::after {
+            content: '';
+            position: absolute;
+            width: 40px;
+            height: 2px;
+            background: linear-gradient(45deg, #e94057, #f27121);
+            bottom: 0;
+            left: 0;
+        }
+
+        .footer-col p {
+            color: #aaa;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+
+        .social-links a {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            background-color: #333;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover {
+            background-color: #e94057;
+            transform: translateY(-3px);
+        }
+
+        .footer-links li {
+            margin-bottom: 12px;
+            list-style: none;
+        }
+
+        .footer-links a {
+            color: #aaa;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: #e94057;
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid #444;
+            color: #aaa;
+            font-size: 14px;
+        }
+
+        /* Edits Section Styling */
+        .edits {
+            padding: 100px 20px;
+            background: #fff;
+        }
+        .edits .section-title {
+            margin-bottom: 20px;
+        }
+        .edits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 40px;
+        }
+        .edit-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+        .edit-item:hover {
+            transform: translateY(-5px);
+        }
+        .edit-video {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        .edit-item:hover .edit-video {
+            transform: scale(1.05);
+        }
+
+        @media (max-width: 992px) {
+            .about-content {
+                flex-direction: column;
+            }
+
+            .hero h1 {
+                font-size: 48px;
+            }
+
+            .hero-image {
+                width: 100%;
+                opacity: 0.3;
+            }
+
+            .hero-content {
+                max-width: 80%;
+                margin: 0 auto;
+                text-align: center;
+                padding-left: 0;
+            }
+
+            .timeline::before {
+                left: 30px;
+            }
+
+            .timeline-item {
+                width: 100%;
+                padding-left: 70px;
+                padding-right: 0;
+                text-align: left;
+            }
+
+            .timeline-item:nth-child(odd) {
+                float: none;
+                text-align: left;
+                padding-right: 0;
+            }
+
+            .timeline-item:nth-child(even) {
+                float: none;
+            }
+
+            .timeline-item::before {
+                left: 16px !important;
+                right: auto !important;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hamburger {
+                display: block;
+                z-index: 101;
+            }
+
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                height: 100vh;
+                width: 70%;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                background-color: rgba(0, 0, 0, 0.95);
+                transition: right 0.5s ease;
+                z-index: 100;
+            }
+
+            .nav-links.active {
+                right: 0;
+            }
+
+            .hamburger.active div:nth-child(1) {
+                transform: rotate(45deg) translate(5px, 6px);
+            }
+
+            .hamburger.active div:nth-child(2) {
+                opacity: 0;
+            }
+
+            .hamburger.active div:nth-child(3) {
+                transform: rotate(-45deg) translate(5px, -6px);
+            }
+
+            .section-title {
+                font-size: 32px;
+            }
+
+            .section-subtitle {
+                font-size: 16px;
+            }
+
+            .footer-content {
+                flex-direction: column;
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            animation: fadeIn 1s ease forwards;
+        }
+
+        .delay-100 {
+            animation-delay: 0.1s;
+        }
+
+        .delay-200 {
+            animation-delay: 0.2s;
+        }
+
+        .delay-300 {
+            animation-delay: 0.3s;
+        }
+
+        .delay-400 {
+            animation-delay: 0.4s;
+        }
+
+        .delay-500 {
+            animation-delay: 0.5s;
+        }
+    </style>
+    <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet" />
+    <style>
+        .progress-container {position: fixed; top: 0; left: 0; width: 100%; height: 4px; background: rgba(255,255,255,0.2); z-index: 9999;}
+        .progress-bar {height: 100%; width: 0; background: linear-gradient(45deg,#e94057,#f27121);}
+    </style>
+</head>
+<body>
+    <div class="progress-container"><div id="progressBar" class="progress-bar"></div></div>
+    <!-- Header Section -->
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">Özge Törer</div>
+                <div class="nav-links">
+                    <a href="#home">Home</a>
+                    <a href="#about">About</a>
+                    <a href="#gallery">Gallery</a>
+                    <a href="#achievements">Achievements</a>
+                    <a href="#edits">Edits</a>
+                </div>
+                <div class="hamburger">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home" data-aos="zoom-in" data-aos-duration="1000">
+        <div class="hero-content fade-in">
+            <h1>Özge Törer</h1>
+            <p>Award-winning Turkish actress known for her captivating performances and versatile acting skills. Discover her journey, achievements, and upcoming projects.</p>
+            <a href="#about" class="cta-btn">Discover More</a>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about" data-aos="fade-up" data-aos-duration="1000">
+        <div class="container">
+            <h2 class="section-title fade-in">About Özge</h2>
+            <p class="section-subtitle fade-in delay-100">A glimpse into the life and career of one of Turkey's most talented actresses</p>
+            <div class="about-content">
+                <div class="about-image fade-in delay-200">
+                    <img src="images.jpg" alt="Özge Törer Portrait">
+                </div>
+                <div class="about-text fade-in delay-300">
+                    <h3>The Journey</h3>
+                    <p>Özge Törer is a celebrated Turkish actress who has captivated audiences with her exceptional talent and versatile performances. Born and raised in Turkey, she developed a passion for acting at a young age and pursued her dreams with determination and dedication.</p>
+                    <p>With her magnetic screen presence and remarkable ability to bring characters to life, Özge has established herself as one of the most promising talents in the Turkish entertainment industry. Her performances are characterized by emotional depth, authenticity, and a remarkable range that allows her to excel in diverse roles.</p>
+                    <p>Throughout her career, she has collaborated with renowned directors and actors, continuously pushing her boundaries and refining her craft. Her dedication to her roles and commitment to excellence have earned her critical acclaim and a devoted fan following both in Turkey and internationally.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section class="gallery" id="gallery" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200">
+        <div class="container">
+            <h2 class="section-title fade-in">Gallery</h2>
+            <p class="section-subtitle fade-in delay-100">Explore captivating moments from Özge's performances and photoshoots</p>
+            <div class="gallery-grid">
+                <div class="gallery-item fade-in delay-200">
+                    <img src="images.jpg" alt="Özge Törer Image 1">
+                    <div class="gallery-overlay">
+                        <h4>Elegant Portrait</h4>
+                        <p>A stunning close-up capturing Özge's natural beauty</p>
+                    </div>
+                </div>
+                <div class="gallery-item fade-in delay-300">
+                    <img src="images (1).jpg" alt="Özge Törer Image 2">
+                    <div class="gallery-overlay">
+                        <h4>By the Sea</h4>
+                        <p>Özge enjoying a beautiful day with an ocean backdrop</p>
+                    </div>
+                </div>
+                <div class="gallery-item fade-in delay-400">
+                    <img src="images (2).jpg" alt="Özge Törer Image 3">
+                    <div class="gallery-overlay">
+                        <h4>Theater Performance</h4>
+                        <p>Behind the scenes at a dramatic performance</p>
+                    </div>
+                </div>
+                <div class="gallery-item fade-in delay-500">
+                    <img src="download.jpg" alt="Özge Törer Image 4">
+                    <div class="gallery-overlay">
+                        <h4>Traditional Costume</h4>
+                        <p>Özge in a beautiful traditional ensemble for a period drama</p>
+                    </div>
+                </div>
+                <div class="gallery-item fade-in delay-200">
+                    <img src="ozge4.jpg" alt="Özge Törer Image 5">
+                    <div class="gallery-overlay">
+                        <h4>Modern Look</h4>
+                        <p>A contemporary fashion photoshoot showcasing her versatility</p>
+                    </div>
+                </div>
+                <div class="gallery-item fade-in delay-300">
+                    <img src="ozge2.jpg" alt="Özge Törer Image 6">
+                    <div class="gallery-overlay">
+                        <h4>Traditional Elegance</h4>
+                        <p>Wearing traditional headpiece for a historical drama</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modal for Gallery Images -->
+    <div class="modal">
+        <span class="close-modal">&times;</span>
+        <div class="modal-content">
+            <img src="" alt="Enlarged Gallery Image">
+        </div>
+    </div>
+
+    <!-- Achievements Section -->
+    <section class="achievements" id="achievements" data-aos="zoom-in" data-aos-duration="1000" data-aos-delay="200">
+        <div class="container">
+            <h2 class="section-title fade-in">Achievements & Milestones</h2>
+            <p class="section-subtitle fade-in delay-100">A timeline of significant moments in Özge's career</p>
+            <div class="timeline">
+                <div class="timeline-item fade-in delay-200">
+                    <div class="timeline-date">2018</div>
+                    <div class="timeline-content">
+                        <h4>Career Beginning</h4>
+                        <p>First major role in a national television series that garnered critical attention</p>
+                    </div>
+                </div>
+                <div class="timeline-item fade-in delay-300">
+                    <div class="timeline-date">2019</div>
+                    <div class="timeline-content">
+                        <h4>Breakthrough Performance</h4>
+                        <p>Lead role in historical drama series that captured audiences across Turkey</p>
+                    </div>
+                </div>
+                <div class="timeline-item fade-in delay-400">
+                    <div class="timeline-date">2020</div>
+                    <div class="timeline-content">
+                        <h4>First Award Nomination</h4>
+                        <p>Nominated for Best Supporting Actress at the Turkish Television Awards</p>
+                    </div>
+                </div>
+                <div class="timeline-item fade-in delay-500">
+                    <div class="timeline-date">2021</div>
+                    <div class="timeline-content">
+                        <h4>International Recognition</h4>
+                        <p>First project to be distributed internationally, bringing her talent to global audiences</p>
+                    </div>
+                </div>
+                <div class="timeline-item fade-in delay-200">
+                    <div class="timeline-date">2022</div>
+                    <div class="timeline-content">
+                        <h4>Film Debut</h4>
+                        <p>First major film role showcasing her versatility as an actress</p>
+                    </div>
+                </div>
+                <div class="timeline-item fade-in delay-300">
+                    <div class="timeline-date">2023</div>
+                    <div class="timeline-content">
+                        <h4>Award Win</h4>
+                        <p>Received Best Actress award for her compelling performance in a drama series</p>
+                    </div>
+                </div>
+                <div class="timeline-item fade-in delay-400">
+                    <div class="timeline-date">2024</div>
+                    <div class="timeline-content">
+                        <h4>New Horizons</h4>
+                        <p>Expanding her career with international collaborations and new projects</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Edits Section -->
+    <section class="edits" id="edits" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200">
+        <div class="container">
+            <h2 class="section-title fade-in">Latest Edits</h2>
+            <p class="section-subtitle fade-in delay-100">Behind-the-scenes moments and edits</p>
+            <div class="edits-grid">
+                <div class="edit-item fade-in delay-200">
+                    <video class="edit-video" controls preload="metadata">
+                        <source src="WhatsApp Video 2025-04-24 at 21.27.31_27549a61.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+                <div class="edit-item fade-in delay-300">
+                    <video class="edit-video" controls preload="metadata">
+                        <source src="WhatsApp Video 2025-04-24 at 21.36.37_9c1bbf9e.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-col">
+                    <h3>Özge Törer</h3>
+                    <p>Award-winning Turkish actress continuing to make her mark in the entertainment industry with captivating performances and versatile roles.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#gallery">Gallery</a></li>
+                        <li><a href="#achievements">Achievements</a></li>
+                        <li><a href="#edits">Edits</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Latest News</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">New Project Announcement</a></li>
+                        <li><a href="#">Award Nomination</a></li>
+                        <li><a href="#">Interview with Vogue</a></li>
+                        <li><a href="#">Charity Gala Appearance</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Contact Info</h3>
+                    <p>For business inquiries:</p>
+                    <p>Email: management@ozgetorer.com</p>
+                    <p>Agency: Star Talent Management</p>
+                    <p>Istanbul, Turkey</p>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 Özge Törer Official. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Font Awesome for icons -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/js/all.min.js"></script>
+
+    <script>
+        // Mobile Navigation Toggle
+        const hamburger = document.querySelector('.hamburger');
+        const navLinks = document.querySelector('.nav-links');
+
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            navLinks.classList.toggle('active');
+        });
+
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                navLinks.classList.remove('active');
+            });
+        });
+
+        // Header scroll effect
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            header.classList.toggle('scrolled', window.scrollY > 50);
+        });
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+    <script>
+        AOS.init({ once: true });
+        window.addEventListener('scroll', () => {
+            const scrollTop = window.scrollY;
+            const docHeight = document.body.scrollHeight - window.innerHeight;
+            const scrollPercent = (scrollTop / docHeight) * 100;
+            document.getElementById('progressBar').style.width = scrollPercent + '%';
+        });
+    </script>
+</body>
+</html>
